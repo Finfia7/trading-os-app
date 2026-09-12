@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b0f14" />
+  <title>Trading OS</title>
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="stylesheet" href="./assets/styles.css" />
+  <link rel="stylesheet" href="./assets/analytics.css" />
+  <link rel="stylesheet" href="./assets/ux-enhancements.css" />
+  <link rel="stylesheet" href="./assets/equity-chart.css" />
+  <link rel="stylesheet" href="./assets/trade-documentation.css" />
+  <link rel="stylesheet" href="./assets/trade-ux-v2.css" />
+  <link rel="stylesheet" href="./assets/closed-trade-router.css?v=29" />
+  <link rel="stylesheet" href="./assets/chart-layout-v2.css" />
+  <link rel="stylesheet" href="./assets/pending-review.css?v=29" />
+</head>
+<body>
+  <div id="app"></div>
+  <div id="modal-root"></div>
+  <script>
+    window.addEventListener('trading-os-documentation-change',()=>{
+      localStorage.setItem('trading-os-pending-v1','1');
+    });
+  </script>
+  <script type="module" src="./js/sync-hotfix.js?v=27"></script>
+  <script type="module" src="./js/trade-log-route-guard-v24.js?v=28"></script>
+  <script type="module" src="./js/loader.js?v=23"></script>
+  <script type="module" src="./js/fee-ui-patch.js"></script>
+  <script type="module" src="./js/analytics.js"></script>
+  <script type="module" src="./js/equity-chart.js"></script>
+  <script type="module" src="./js/dashboard-calendar.js"></script>
+  <script type="module" src="./js/trade-documentation.js"></script>
+  <script type="module" src="./js/review-lock.js"></script>
+  <script type="module" src="./js/trade-ux-v2.js"></script>
+  <script type="module" src="./js/pending-review.js?v=27"></script>
+  <script type="module" src="./js/pending-review-dashboard-v24.js?v=28"></script>
+  <script type="module" src="./js/closed-trade-close-fix.js?v=30"></script>
+</body>
+</html>
