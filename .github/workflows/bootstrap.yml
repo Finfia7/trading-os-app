@@ -1,0 +1,35 @@
+name: Install Trading OS Starter
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/bootstrap.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reassemble and verify starter archive
+        run: |
+          cat             .bootstrap/app.part01             .bootstrap/app.part02             .bootstrap/app.part03             .bootstrap/app.part04.00             .bootstrap/app.part04.01             .bootstrap/app.part04.02             .bootstrap/app.part04.03             .bootstrap/app.part04.04             .bootstrap/app.part05.00             .bootstrap/app.part05.01             .bootstrap/app.part05.02             .bootstrap/app.part05.03             > /tmp/app.b64
+          base64 -d /tmp/app.b64 > /tmp/app.tar.gz
+          tar -tzf /tmp/app.tar.gz > /dev/null
+      - name: Install starter files
+        run: |
+          tar -xzf /tmp/app.tar.gz -C .
+          rm -rf .bootstrap
+          rm -f .github/workflows/bootstrap.yml
+      - name: Commit installed starter
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && exit 0
+          git commit -m "Install Trading OS starter"
+          git push
