@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Reassemble and verify starter archive
         run: |
-          cat             .bootstrap/app.part01             .bootstrap/app.part02             .bootstrap/app.part03             .bootstrap/app.part04.00             .bootstrap/app.part04.01             .bootstrap/app.part04.02             .bootstrap/app.part04.03             .bootstrap/app.part04.04             .bootstrap/app.part05.00             .bootstrap/app.part05.01             .bootstrap/app.part05.02             .bootstrap/app.part05.03             > /tmp/app.b64
+          cat             .bootstrap/app.part01.00             .bootstrap/app.part01.01             .bootstrap/app.part01.02             .bootstrap/app.part01.03.00             .bootstrap/app.part01.03.01             .bootstrap/app.part01.03.02             .bootstrap/app.part01.03.03             .bootstrap/app.part01.04             .bootstrap/app.part02             .bootstrap/app.part03             .bootstrap/app.part04.00             .bootstrap/app.part04.01             .bootstrap/app.part04.02             .bootstrap/app.part04.03             .bootstrap/app.part04.04             .bootstrap/app.part05.00             .bootstrap/app.part05.01             .bootstrap/app.part05.02             .bootstrap/app.part05.03             > /tmp/app.b64
           base64 -d /tmp/app.b64 > /tmp/app.tar.gz
           tar -tzf /tmp/app.tar.gz > /dev/null
       - name: Install starter files
